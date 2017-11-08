@@ -1,0 +1,26 @@
+CREATE TABLE login(
+    type varchar(20),
+    userkey varchar(30),
+    passkey varchar(30),
+    PRIMARY KEY (type,userkey));
+
+create table stock_inventory(
+    barcodeNo int,
+    articleNo varchar(20) not null,
+    articleName varchar(30),
+    articleCategory varchar(30),
+    sp int,
+    brand varchar(20),
+    color varchar(20),
+    PRIMARY KEY(barcodeNo, articleNo, sp));
+    
+
+CREATE TABLE article_info(
+    barcodeNo int,
+    articleNo varchar(20) not null,
+    manufactureDate date,
+    gender varchar(10),
+    cp int,
+    unitsSold int,
+    PRIMARY KEY(barcodeNo, articleNo),
+    FOREIGN KEY (barcodeNo,articleNo) REFERENCES stock_inventory(barcodeNo,articleNo));
